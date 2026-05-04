@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { useHistory } from "../../store/history";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { credential } from "../../config/credential/const";
+import { credential } from "../../config/credential/const.js";
 
 const CardRiwayat = () => {
   const { riwayat, getHistory } = useHistory();
@@ -128,13 +128,13 @@ const CardRiwayat = () => {
   }
 
   const successDonations = riwayat.filter(
-    (item) => item.statusPayment === "Success"
+    (item) => item.statusPayment === "Success",
   );
   const pendingDonations = riwayat.filter(
-    (item) => item.statusPayment === "Pending"
+    (item) => item.statusPayment === "Pending",
   );
   const failedDonations = riwayat.filter(
-    (item) => item.statusPayment === "Failed"
+    (item) => item.statusPayment === "Failed",
   );
 
   const renderCards = (data, statusColor, statusText) => {
