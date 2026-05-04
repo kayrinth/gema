@@ -5,7 +5,6 @@ import { useNavigate } from "react-router-dom";
 import FormField from "../molecules/FormField";
 import CheckboxField from "../molecules/CheckboxField";
 import Button from "../atoms/Button";
-import { credential } from "../../config/credential/const.js";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { removeSnapToken } from "../../utils/tokenManager";
@@ -32,7 +31,7 @@ const FormDonasi = () => {
   useEffect(() => {
     const script = document.createElement("script");
     script.src = "https://app.sandbox.midtrans.com/snap/snap.js";
-    script.setAttribute("data-client-key", credential.MIDTRANS_CLIENT_KEY);
+    script.setAttribute("data-client-key", import.meta.env.VITE_MIDTRANS_CLIENT_KEY);
     script.async = true;
     document.body.appendChild(script);
 
