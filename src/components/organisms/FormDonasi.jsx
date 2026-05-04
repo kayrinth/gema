@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import FormField from "../molecules/FormField";
 import CheckboxField from "../molecules/CheckboxField";
 import Button from "../atoms/Button";
-import { credential } from "../../config/credential/const";
+import { credential } from "../../config/credential/const.js";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { removeSnapToken } from "../../utils/tokenManager";
@@ -53,7 +53,7 @@ const FormDonasi = () => {
             headers: {
               Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
             },
-          }
+          },
         );
         if (!didCancel) {
           setCampaignDetails({
@@ -193,8 +193,6 @@ const FormDonasi = () => {
   };
 
   const handleNext = () => {
-
-
     // Validate steps and continue if valid
     if (currentStep === 1 && !isStep1Valid) return;
     if (currentStep === 2 && !isStep2Valid) return;
@@ -217,8 +215,8 @@ const FormDonasi = () => {
   }
 
   const imageUrl = campaignDetails?.photo
-  ? `${import.meta.env.VITE_BASE_URL}/files/${campaignDetails.photo}`
-  : "/default-image.png";
+    ? `${import.meta.env.VITE_BASE_URL}/files/${campaignDetails.photo}`
+    : "/default-image.png";
   return (
     <div className="flex items-center justify-center p-6 bg-gray-100">
       <ToastContainer />
@@ -252,7 +250,7 @@ const FormDonasi = () => {
                 <span className="text-lg">
                   Rp{" "}
                   {new Intl.NumberFormat("id-ID").format(
-                    campaignDetails.targetAmount
+                    campaignDetails.targetAmount,
                   )}
                 </span>
               </p>
@@ -298,7 +296,7 @@ const FormDonasi = () => {
                 type="text"
                 name="amount"
                 value={`Rp ${new Intl.NumberFormat("id-ID").format(
-                  formData.amount || ""
+                  formData.amount || "",
                 )}`}
                 placeholder="Masukkan Jumlah Donasi Anda"
                 onChange={(e) => {
